@@ -1,0 +1,52 @@
+{
+  "signIn": [
+    {
+      
+      "username": "testuser@example.com",
+      "password": "password123",
+      "expectedResult": "Login successful",
+      "nameXpath": "",
+      "passwordXpath": "password123",
+      "EyeIconXpath": "password123",
+      "rememberMeBoxXpath": "password123",
+      "forgotPasswordXpath": "password123",
+      "signInBtnXpath": "password123",
+      "registerBtnXpath": "password123"
+    },
+    {
+      "testName": "Invalid login - wrong password",
+      "username": "testuser@example.com",
+      "password": "wrongpass",
+      "expectedResult": "Invalid credentials"
+    }
+  ],
+  "forgotPassword":[
+    {
+"fgUsernameXpath": "password123",
+"submitBtnXpath":"",
+"backToLoginBtnXpaht":""
+
+ }
+  ],
+  "signupTests": [
+    {
+      "userName": "Valid signup",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "Welcome@123",
+      "confirmPassword": "Welcome@123",
+      "expectedResult": "Signup successful"
+    },
+    {
+      "UserNameXpath": "Signup with existing email",
+      "PassWordXpath": "Jane Smith",
+      "ConfirmPasswordXpath": "Welcome@123",
+      "emailXpath": "Email already exists",
+      "firstnameXpath": "john.doe@example.com",
+      "lastNameXpath": "john.doe@example.com",
+      "RegBtnXpath": "john.doe@example.com",
+      "backToLoginXpath": "john.doe@example.com"
+
+    }
+  ]
+}
