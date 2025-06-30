@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    // tools {
-    //     nodejs "NodeJS_18"  // Make sure "NodeJS_18" is configured in Jenkins > Global Tool Configuration
-    // }
-
     environment {
         CI = 'true'
     }
@@ -18,21 +14,22 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright install'
-                sh 'npx playwright test tests/signup.spec.js'
+                bat 'npx playwright install'
+                bat 'npx playwright test tests/signup.spec.js'
             }
         }
 
         stage('Archive Test Reports') {
             steps {
-                archiveArtifacts artifacts: 'test-results/**/*.json', allowEmptyArchive: true
-                junit 'test-results/**/*.xml' // Optional if you have JUnit results
+                archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
+                // Only use this if you are exporting JUnit format test results
+                // junit 'test-results/**/*.xml'
             }
         }
     }
