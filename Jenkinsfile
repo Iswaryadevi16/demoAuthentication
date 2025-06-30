@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "NodeJS_18" // Use name you configured in Jenkins under Global Tool Configuration
-    }
+    // tools {
+    //     nodejs "NodeJS_18" // Use name you configured in Jenkins under Global Tool Configuration
+    // }
 
     environment {
         HOME = "${env.WORKSPACE}"
