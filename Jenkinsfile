@@ -1,16 +1,20 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs "NodeJS_18"  // Make sure "NodeJS_18" is configured in Jenkins > Global Tool Configuration
+    }
+
     environment {
-        HOME = "${env.WORKSPACE}"
+        CI = 'true'
     }
 
-    stage('Clone Code') {
-    steps {
-        git url: 'https://github.com/Iswaryadevi16/demoAuthentication.git', credentialsId: 'github-path', branch: 'main'
-    }
-
-
+    stages {
+        stage('Clone Code') {
+            steps {
+                git url: 'https://github.com/Iswaryadevi16/demoAuthentication.git', branch: 'main', credentialsId: 'github-path'
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
@@ -27,7 +31,8 @@ pipeline {
 
         stage('Archive Test Reports') {
             steps {
-                archiveArtifacts artifacts: '**/playwright-report/**', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'test-results/**/*.json', allowEmptyArchive: true
+                junit 'test-results/**/*.xml' // Optional if you have JUnit results
             }
         }
     }
