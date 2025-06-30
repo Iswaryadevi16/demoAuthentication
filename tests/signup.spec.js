@@ -102,5 +102,19 @@ await page.waitForTimeout(1000);
 await page.click("//button[text()='Book Now']");
 
 
- })
+ }),
+test('logout_function',async({page})=>{
+await page.goto("http://localhost:3000/");
+await page.waitForTimeout(1000);
+await page.click("//button[text()='Login']");
+await page.waitForTimeout(1000);
+await page.fill("//input[@id='username']","iswarya1");
+await page.fill("//input[@id='password']","123123123");
+await page.click("//input[@id='rememberMe']");
+await page.waitForTimeout(1000);
+await page.click("//button[@name='login']");
+await page.click("//button[@class='dropdown-toggle']");
+await page.click("//button[text()=' Logout']");
+
+})
 
