@@ -5,12 +5,12 @@ pipeline {
         HOME = "${env.WORKSPACE}"
     }
 
-    stages {
-        stage('Clone Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Iswaryadevi16/demoAuthentication.git'
-            }
-        }
+    stage('Clone Code') {
+    steps {
+        git url: 'https://github.com/Iswaryadevi16/demoAuthentication.git', credentialsId: 'github-path', branch: 'main'
+    }
+}
+
 
         stage('Install Dependencies') {
             steps {
