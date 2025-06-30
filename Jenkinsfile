@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    // tools {
-    //     nodejs "NodeJS_18" // Use name you configured in Jenkins under Global Tool Configuration
-    // }
-
     environment {
         HOME = "${env.WORKSPACE}"
     }
@@ -12,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                git branch: 'main', url: 'https://github.com/Iswaryadevi16/demoAuthentication.git'
             }
         }
 
@@ -24,8 +20,8 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright install'  // install browsers
-                sh 'npx playwright test'     // run tests gggggg
+                sh 'npx playwright install'
+                sh 'npx playwright test'
             }
         }
 
